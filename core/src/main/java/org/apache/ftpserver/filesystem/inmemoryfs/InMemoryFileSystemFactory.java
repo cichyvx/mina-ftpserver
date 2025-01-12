@@ -29,10 +29,21 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * Factory class for creating instances of an in-memory file system.
+ * <p>
+ *  * This implementation provides a lightweight and non-persistent file system
+ *  * stored entirely in memory, suitable for testing or temporary data storage.
+ * </p>
+ */
 public class InMemoryFileSystemFactory implements FileSystemFactory {
 
     private final static Map<String, InMemoryFileSystemView> filesystemMap = new ConcurrentHashMap<>();
 
+    /**
+     * Create the appropriate user file system view.
+     * {@inheritDoc}
+     */
     @Override
     public synchronized FileSystemView createFileSystemView(User user) throws FtpException {
         Objects.requireNonNull(user);
